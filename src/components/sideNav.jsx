@@ -8,7 +8,7 @@ const SideNav = ({ brandNames, categoryNames, tagNames }) => {
   };
 
   return (
-    <StyledSideNav className="side-nav open">
+    <StyledSideNav className="side-nav">
       <button className="side-nav__btn" onClick={toggleNav}>
         <i className="fa-solid fa-bars"></i>
       </button>

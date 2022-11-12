@@ -5,7 +5,7 @@ const StyledSideNav = styled.nav`
     .side-nav {
       &__bg {
         background-color: rgba(0, 0, 0, 0.5);
-        position: absolute;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;

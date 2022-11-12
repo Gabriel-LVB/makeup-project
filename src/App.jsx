@@ -3,14 +3,15 @@ import Header from "./components/header";
 import SideNav from "./components/sideNav";
 import dataBase from "./db.json";
 import { useEffect, useState } from "react";
+import Item from "./components/Item";
+import Items from "./components/items";
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(dataBase.items);
   const [brandNames, setBrandNames] = useState([]);
   const [categoryNames, setCategoryNames] = useState([]);
   const [tagNames, setTagNames] = useState([]);
   const getInitialItems = () => {
-    let tags = [];
     setBrandNames(
       Array.from(
         new Set(
@@ -31,6 +32,7 @@ function App() {
         )
       )
     );
+    let tags = [];
     dataBase.items.map((item) =>
       item.tag_list.map((tag) => {
         tag && tags.push(tag);
@@ -49,6 +51,7 @@ function App() {
         categoryNames={categoryNames}
         tagNames={tagNames}
       />
+      <Items items={items} title="All Products" />
     </div>
   );
 }
