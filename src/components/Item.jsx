@@ -2,7 +2,6 @@ import StyledItem from "./styles/Item.styled";
 import Color from "./Color";
 
 const Item = ({ item }) => {
-  console.log(item);
   const rating = () => {
     const rating = Math.round(item.rating * 2) / 2 || 5;
     let stars = [];

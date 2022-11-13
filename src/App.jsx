@@ -3,7 +3,6 @@ import Header from "./components/header";
 import SideNav from "./components/sideNav";
 import dataBase from "./db.json";
 import { useEffect, useState } from "react";
-import Item from "./components/Item";
 import Items from "./components/items";
 
 function App() {
@@ -11,6 +10,7 @@ function App() {
   const [brandNames, setBrandNames] = useState([]);
   const [categoryNames, setCategoryNames] = useState([]);
   const [tagNames, setTagNames] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const getInitialItems = () => {
     setBrandNames(
       Array.from(
@@ -42,6 +42,11 @@ function App() {
   };
 
   useEffect(getInitialItems, []);
+
+  const lastItemIndex = currentPage * 10;
+  const firstItemIndex = lastItemIndex - 10;
+  const currentItems = items.slice(firstItemIndex, lastItemIndex);
+
   return (
     <div>
       <GlobalStyles />
@@ -51,7 +56,13 @@ function App() {
         categoryNames={categoryNames}
         tagNames={tagNames}
       />
-      <Items items={items} title="All Products" />
+      <Items
+        items={items}
+        currentItems={currentItems}
+        title="All Products"
+        pageSetter={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 }
