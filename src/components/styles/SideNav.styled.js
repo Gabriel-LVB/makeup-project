@@ -63,7 +63,7 @@ const StyledSideNav = styled.nav`
         text-align: center;
         margin-bottom: 1rem;
         margin-top: 2rem;
-        font-size: 2rem;
+        font-size: 2.3rem;
       }
     }
   }

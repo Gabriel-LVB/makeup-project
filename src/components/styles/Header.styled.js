@@ -14,7 +14,9 @@ const Header = styled.header`
       font-family: "Blackout";
       color: #cc71ca;
       text-shadow: 0.5px 2px 0px black;
-      font-size: 2.5rem;
+      font-size: 3.5rem;
+      cursor: pointer;
+      user-select: none;
     }
   }
 
@@ -27,6 +29,11 @@ const Header = styled.header`
     display: flex;
     height: 2rem;
     width: 80%;
+
+    [placeholder] {
+      width: 85%;
+      text-overflow: ellipsis;
+    }
 
     &__input {
       border-radius: 10px 0px 0px 10px;
@@ -41,6 +48,7 @@ const Header = styled.header`
     }
     &__btn {
       border-radius: 0px 10px 10px 0px;
+      cursor: pointer;
     }
   }
   .search__btn,
@@ -55,6 +63,7 @@ const Header = styled.header`
   }
   .cart {
     border-radius: 10px;
+    cursor: pointer;
   }
 `;
 

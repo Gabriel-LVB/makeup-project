@@ -5,6 +5,8 @@ const StyledPagination = styled.ul`
   width: fit-content;
   margin: auto;
   gap: 1px;
+  width: 100%;
+  justify-content: center;
 
   .pagination__item {
     list-style-type: none;

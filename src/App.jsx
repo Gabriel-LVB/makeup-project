@@ -11,6 +11,10 @@ function App() {
   const [categoryNames, setCategoryNames] = useState([]);
   const [tagNames, setTagNames] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [itemsTitle, setItemsTitle] = useState("All Products");
+  const [search, setSearch] = useState("");
+  const [searchedName, setSearchedName] = useState(null);
+  const [searchedItems, setSearchedItems] = useState(null);
   const getInitialItems = () => {
     setBrandNames(
       Array.from(
@@ -40,28 +44,85 @@ function App() {
     );
     setTagNames(Array.from(new Set(tags)));
   };
-
   useEffect(getInitialItems, []);
+
+  useEffect(() => {
+    scrollToTop();
+  }, [currentPage, items, searchedItems]);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const onListItemClick = (name, title) => {
+    setItemsTitle(`${title}: ${name}`);
+    title =
+      title === "categories"
+        ? "category"
+        : title === "brands"
+        ? "brand"
+        : "tag_list";
+    name = title === "category" ? name.replace(" ", "_") : name;
+    const filteredItems = dataBase.items.filter((item) =>
+      title !== "tag_list" ? item[title] === name : item.tag_list.includes(name)
+    );
+    setItems(filteredItems);
+    setCurrentPage(1);
+    setSearchedName("");
+    setSearchedItems("");
+  };
+
+  const setItemsToAll = () => {
+    setItems(dataBase.items);
+    setCurrentPage(1);
+    setItemsTitle("All Products");
+    setSearchedName(null);
+    setSearchedItems(null);
+  };
+
+  const onSearchSubmit = (e) => {
+    e.preventDefault();
+    setSearchedName(search);
+    const newItems = items.filter((item) =>
+      item.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setSearchedItems(newItems.length > 0 ? newItems : []);
+    setCurrentPage(1);
+    setSearch("");
+  };
 
   const lastItemIndex = currentPage * 10;
   const firstItemIndex = lastItemIndex - 10;
-  const currentItems = items.slice(firstItemIndex, lastItemIndex);
+  const currentItems = (searchedItems || items).slice(
+    firstItemIndex,
+    lastItemIndex
+  );
 
   return (
     <div>
       <GlobalStyles />
-      <Header />
+      <Header
+        setItemsToAll={setItemsToAll}
+        search={search}
+        setSearch={setSearch}
+        title={itemsTitle}
+        onSearchSubmit={onSearchSubmit}
+      />
       <SideNav
         brandNames={brandNames}
         categoryNames={categoryNames}
         tagNames={tagNames}
+        onListItemClick={onListItemClick}
       />
+
       <Items
-        items={items}
+        items={searchedItems || items}
         currentItems={currentItems}
-        title="All Products"
+        title={itemsTitle}
         pageSetter={setCurrentPage}
         currentPage={currentPage}
+        searchedName={searchedName}
+        noProductFound={!!searchedItems}
       />
     </div>
   );

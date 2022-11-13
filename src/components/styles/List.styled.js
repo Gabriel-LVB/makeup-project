@@ -27,6 +27,8 @@ export default styled.div`
       align-items: center;
       padding: 10px 30px;
       cursor: pointer;
+      text-transform: uppercase;
+      font-size: 1rem;
     }
 
     &__toggler {

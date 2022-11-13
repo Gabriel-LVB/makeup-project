@@ -2,6 +2,11 @@ import StyledPagination from "./styles/pagination.styled";
 
 const Pagination = ({ items, pageSetter, currentPage }) => {
   const pagesNumber = Math.ceil(items.length / 10);
+
+  if (pagesNumber === 0) {
+    return null;
+  }
+
   let allPages = Array(pagesNumber).fill(0);
   allPages = allPages.map((v, i) => (
     <li

@@ -5,8 +5,16 @@ const StyledItems = styled.section`
   flex-wrap: wrap;
   padding: 20px;
   gap: 20px;
-  h1.title {
+  .title {
     width: 100%;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+  }
+  .subtitle {
+    width: 100%;
+    font-size: 1.2rem;
+    margin-top: -1rem;
+    color: #474747;
   }
 `;
 
