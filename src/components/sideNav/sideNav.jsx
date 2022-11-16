@@ -1,4 +1,4 @@
-import StyledSideNav from "./styles/SideNav.styled";
+import StyledSideNav from "../styles/SideNav.styled";
 import SNList from "./sideNavList";
 
 const SideNav = ({ brandNames, categoryNames, tagNames, onListItemClick }) => {

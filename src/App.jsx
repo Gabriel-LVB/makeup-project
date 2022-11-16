@@ -1,9 +1,11 @@
 import GlobalStyles from "./components/styles/Global.styles";
-import Header from "./components/header";
-import SideNav from "./components/sideNav";
+import Header from "./components/header/header";
+import SideNav from "./components/sideNav/sideNav";
 import dataBase from "./db.json";
 import { useEffect, useState } from "react";
-import Items from "./components/items";
+import Items from "./components/main/items";
+import ItemOpened from "./components/main/itemOpened";
+import CartOpen from "./components/cart/cartOpened";
 
 function App() {
   const [items, setItems] = useState(dataBase.items);
@@ -15,6 +17,8 @@ function App() {
   const [search, setSearch] = useState("");
   const [searchedName, setSearchedName] = useState(null);
   const [searchedItems, setSearchedItems] = useState(null);
+  const [itemOpened, setItemOpened] = useState(null);
+  const [cartOpened, setCartOpened] = useState(false);
   const getInitialItems = () => {
     setBrandNames(
       Array.from(
@@ -48,7 +52,7 @@ function App() {
 
   useEffect(() => {
     scrollToTop();
-  }, [currentPage, items, searchedItems]);
+  }, [currentPage, items, searchedItems, itemOpened]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -70,6 +74,7 @@ function App() {
     setCurrentPage(1);
     setSearchedName("");
     setSearchedItems("");
+    setItemOpened(null);
   };
 
   const setItemsToAll = () => {
@@ -78,6 +83,7 @@ function App() {
     setItemsTitle("All Products");
     setSearchedName(null);
     setSearchedItems(null);
+    setItemOpened(null);
   };
 
   const onSearchSubmit = (e) => {
@@ -89,6 +95,11 @@ function App() {
     setSearchedItems(newItems.length > 0 ? newItems : []);
     setCurrentPage(1);
     setSearch("");
+    setItemOpened(null);
+  };
+
+  const openItem = (item) => {
+    setItemOpened(item);
   };
 
   const lastItemIndex = currentPage * 10;
@@ -107,6 +118,7 @@ function App() {
         setSearch={setSearch}
         title={itemsTitle}
         onSearchSubmit={onSearchSubmit}
+        setCartOpened={setCartOpened}
       />
       <SideNav
         brandNames={brandNames}
@@ -115,15 +127,19 @@ function App() {
         onListItemClick={onListItemClick}
       />
 
-      <Items
-        items={searchedItems || items}
-        currentItems={currentItems}
-        title={itemsTitle}
-        pageSetter={setCurrentPage}
-        currentPage={currentPage}
-        searchedName={searchedName}
-        noProductFound={!!searchedItems}
-      />
+      {(cartOpened && <CartOpen />) ||
+        (itemOpened && <ItemOpened item={itemOpened} />) || (
+          <Items
+            items={searchedItems || items}
+            currentItems={currentItems}
+            title={itemsTitle}
+            pageSetter={setCurrentPage}
+            currentPage={currentPage}
+            searchedName={searchedName}
+            noProductFound={!!searchedItems}
+            openItem={openItem}
+          />
+        )}
     </div>
   );
 }

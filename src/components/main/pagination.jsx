@@ -1,4 +1,4 @@
-import StyledPagination from "./styles/pagination.styled";
+import StyledPagination from "../styles/pagination.styled";
 
 const Pagination = ({ items, pageSetter, currentPage }) => {
   const pagesNumber = Math.ceil(items.length / 10);

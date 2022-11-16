@@ -1,4 +1,4 @@
-import HeaderStyled from "./styles/Header.styled";
+import HeaderStyled from "../styles/Header.styled";
 import Search from "./Search";
 import Cart from "./Cart";
 
@@ -8,6 +8,7 @@ const Header = ({
   setSearch,
   title,
   onSearchSubmit,
+  setCartOpened,
 }) => {
   return (
     <HeaderStyled>
@@ -21,7 +22,7 @@ const Header = ({
           title={title}
           onSearchSubmit={onSearchSubmit}
         />
-        <Cart />
+        <Cart setCartOpen={setCartOpened} />
       </div>
     </HeaderStyled>
   );

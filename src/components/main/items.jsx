@@ -1,4 +1,4 @@
-import StyledItems from "./styles/Items.styled";
+import StyledItems from "../styles/Items.styled";
 import Item from "./Item";
 import Pagination from "./pagination";
 
@@ -10,6 +10,7 @@ const Items = ({
   currentPage,
   searchedName,
   noProductFound,
+  openItem,
 }) => {
   return (
     <StyledItems className="items">
@@ -24,7 +25,9 @@ const Items = ({
         currentPage={currentPage}
       />
       {(currentItems.length > 0 &&
-        currentItems.map((item) => <Item key={item.id} item={item} />)) ||
+        currentItems.map((item) => (
+          <Item key={item.id} item={item} openItem={openItem} />
+        ))) ||
         (noProductFound && <h1>No Product Found :/</h1>)}
       <Pagination
         items={items}

@@ -11,14 +11,15 @@ const StyledPagination = styled.ul`
   .pagination__item {
     list-style-type: none;
     padding: 5px 8px;
-    border: 1px solid #cc71ca;
+    border: 1px dotted #909090;
+    border-bottom: 2px solid #101010;
     cursor: pointer;
     border-radius: 10px;
     font-size: 0.9rem;
 
     &:hover,
     &.current {
-      background-color: #cc71ca;
+      background-color: #101010;
       color: white;
     }
 

@@ -1,5 +1,5 @@
 import SideNavListItem from "./SideNavItem";
-import StyledList from "./styles/List.styled";
+import StyledList from "../styles/List.styled";
 
 const SideNavList = ({
   title,

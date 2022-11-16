@@ -10,43 +10,52 @@ export default styled.div`
     "rating price"
     "colors colors";
   justify-items: center;
-  padding: 15px;
   gap: 10px;
+  padding: 15px;
   border-radius: 50px;
-  box-shadow: 1px 1px 5px black;
-
-  * {
-  }
+  border: 1px dotted black;
+  border-right: 3px solid #505050;
+  border-left: 3px solid #505050;
 
   .item {
     &__img {
+      height: 100%;
+      padding: 10px;
+      object-fit: contain;
       grid-area: img;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
     &__name {
       grid-area: name;
       font-size: 1.3rem;
-      border-top: 1px solid black;
-      padding-top: 10px;
       text-align: center;
       text-transform: capitalize;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline #cc71ca;
+      }
     }
     &__price {
       grid-area: price;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       /* justify-self: end; */
     }
-    &__rating {
+    &__rating__stars {
       grid-area: rating;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
 
       /* justify-self: start; */
       color: #cc71ca;
     }
     &__colors {
-      grid-area: colors;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
+      &__container {
+        grid-area: colors;
+      }
     }
   }
 `;
