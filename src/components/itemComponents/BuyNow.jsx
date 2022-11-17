@@ -1,8 +1,8 @@
 import StyledBtn from "../styles/Button.styled";
 
-const BuyNow = () => {
+const BuyNow = ({ onClick, className }) => {
   return (
-    <StyledBtn>
+    <StyledBtn className={className} onClick={() => onClick()}>
       <i className="fa-solid fa-bolt"></i> Buy Now
     </StyledBtn>
   );

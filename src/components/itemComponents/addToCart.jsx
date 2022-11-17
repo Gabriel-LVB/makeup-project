@@ -1,9 +1,9 @@
 import CartIcon from "../icons/CartIcon";
 import StyledBtn from "../styles/Button.styled";
 
-const AddToCart = () => {
+const AddToCart = ({ className, onClick = null }) => {
   return (
-    <StyledBtn>
+    <StyledBtn className={className} onClick={onClick}>
       <CartIcon /> Add to Cart
     </StyledBtn>
   );

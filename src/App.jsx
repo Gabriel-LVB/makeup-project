@@ -19,6 +19,8 @@ function App() {
   const [searchedItems, setSearchedItems] = useState(null);
   const [itemOpened, setItemOpened] = useState(null);
   const [cartOpened, setCartOpened] = useState(false);
+  const [itemsOnCart, setItemsOnCart] = useState([]);
+
   const getInitialItems = () => {
     setBrandNames(
       Array.from(
@@ -47,12 +49,30 @@ function App() {
       })
     );
     setTagNames(Array.from(new Set(tags)));
+    setItemsOnCart(getItemsFromLocalStorage());
   };
+
   useEffect(getInitialItems, []);
 
   useEffect(() => {
     scrollToTop();
   }, [currentPage, items, searchedItems, itemOpened]);
+
+  useEffect(() => {
+    let items = {};
+    itemsOnCart.map((item, index) => (items[index] = JSON.stringify(item)));
+    window.localStorage.setItem("items", JSON.stringify(items));
+  }, [itemsOnCart]);
+
+  const getItemsFromLocalStorage = () => {
+    const itemsOnStorage = JSON.parse(window.localStorage.getItem("items"));
+    return (
+      !!itemsOnStorage &&
+      Object.keys(itemsOnStorage).map(
+        (index) => index && JSON.parse(itemsOnStorage[index])
+      )
+    );
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -128,7 +148,13 @@ function App() {
       />
 
       {(cartOpened && <CartOpen />) ||
-        (itemOpened && <ItemOpened item={itemOpened} />) || (
+        (itemOpened && (
+          <ItemOpened
+            item={itemOpened}
+            setItemsOnCart={setItemsOnCart}
+            itemsOnCart={itemsOnCart}
+          />
+        )) || (
           <Items
             items={searchedItems || items}
             currentItems={currentItems}

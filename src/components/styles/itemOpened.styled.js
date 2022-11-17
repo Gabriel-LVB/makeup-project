@@ -88,7 +88,8 @@ const StyledItemOpened = styled(StyledItem)`
         width: fit-content;
       }
       table {
-        width: min(100%, 500px);
+        width: max(100%, 500px);
+        max-width: 100%;
       }
       .table__row {
         text-transform: capitalize;

@@ -7,11 +7,25 @@ import Details from "../itemComponents/Details";
 import Colors from "../itemComponents/Colors";
 import AddToCart from "../itemComponents/addToCart";
 import BuyNow from "../itemComponents/BuyNow";
+import CartModal from "../cart/CartModal";
+import { useState } from "react";
 
-const ItemOpened = ({ item }) => {
-  console.log(item);
+const ItemOpened = ({ item, setItemsOnCart, itemsOnCart }) => {
+  const [modalTitle, setModalTitle] = useState("");
+
+  const openCartModal = (title) => {
+    setModalTitle(title);
+    document.querySelector(".cart__modal").classList.add("open");
+  };
+
   return (
     <StyledItemOpened>
+      <CartModal
+        item={item}
+        title={modalTitle}
+        setItemsOnCart={setItemsOnCart}
+        itemsOnCart={itemsOnCart}
+      />
       <Image item={item} />
       <Name item={item} />
       <Price price={item.price} />
@@ -20,8 +34,8 @@ const ItemOpened = ({ item }) => {
       <Colors colors={item.product_colors} showNames={true} />
       <Details item={item} />
       <div className="item__btns">
-        <AddToCart />
-        <BuyNow />
+        <AddToCart onClick={() => openCartModal("Add to Cart")} />
+        <BuyNow onClick={() => openCartModal("Buy Now")} />
       </div>
     </StyledItemOpened>
   );
