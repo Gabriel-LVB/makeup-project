@@ -20,6 +20,7 @@ function App() {
   const [itemOpened, setItemOpened] = useState(null);
   const [cartOpened, setCartOpened] = useState(false);
   const [itemsOnCart, setItemsOnCart] = useState([]);
+  const [modalTitle, setModalTitle] = useState("");
 
   const getInitialItems = () => {
     setBrandNames(
@@ -44,12 +45,10 @@ function App() {
     );
     let tags = [];
     dataBase.items.map((item) =>
-      item.tag_list.map((tag) => {
-        tag && tags.push(tag);
-      })
+      item.tag_list.map((tag) => tag && tags.push(tag))
     );
     setTagNames(Array.from(new Set(tags)));
-    setItemsOnCart(getItemsFromLocalStorage());
+    setItemsOnCart(getItemsFromLocalStorage() || []);
   };
 
   useEffect(getInitialItems, []);
@@ -60,7 +59,8 @@ function App() {
 
   useEffect(() => {
     let items = {};
-    itemsOnCart.map((item, index) => (items[index] = JSON.stringify(item)));
+    itemsOnCart &&
+      itemsOnCart.map((item, index) => (items[index] = JSON.stringify(item)));
     window.localStorage.setItem("items", JSON.stringify(items));
   }, [itemsOnCart]);
 
@@ -95,6 +95,7 @@ function App() {
     setSearchedName("");
     setSearchedItems("");
     setItemOpened(null);
+    setCartOpened(false);
   };
 
   const setItemsToAll = () => {
@@ -104,6 +105,7 @@ function App() {
     setSearchedName(null);
     setSearchedItems(null);
     setItemOpened(null);
+    setCartOpened(false);
   };
 
   const onSearchSubmit = (e) => {
@@ -116,10 +118,16 @@ function App() {
     setCurrentPage(1);
     setSearch("");
     setItemOpened(null);
+    setCartOpened(false);
   };
 
   const openItem = (item) => {
     setItemOpened(item);
+  };
+
+  const openCartModal = (title) => {
+    setModalTitle(title);
+    document.querySelector(".cart__modal").classList.add("open");
   };
 
   const lastItemIndex = currentPage * 10;
@@ -147,12 +155,24 @@ function App() {
         onListItemClick={onListItemClick}
       />
 
-      {(cartOpened && <CartOpen />) ||
+      {(cartOpened && (
+        <CartOpen
+          items={itemsOnCart}
+          setItemsOnCart={setItemsOnCart}
+          itemsOnCart={itemsOnCart}
+          openCartModal={openCartModal}
+          modalTitle={modalTitle}
+          setItemsToAll={setItemsToAll}
+        />
+      )) ||
         (itemOpened && (
           <ItemOpened
             item={itemOpened}
             setItemsOnCart={setItemsOnCart}
             itemsOnCart={itemsOnCart}
+            setCartOpen={setCartOpened}
+            openCartModal={openCartModal}
+            modalTitle={modalTitle}
           />
         )) || (
           <Items

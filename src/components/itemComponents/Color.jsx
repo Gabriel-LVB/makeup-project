@@ -19,15 +19,16 @@ const StyledColor = styled.li`
 const Color = ({
   color,
   showName,
-  onClick = null,
+  onClick = () => {},
   className = "item__colors__color",
+  size = null,
 }) => {
   const printName = showName && !!color.colour_name;
   return (
     <StyledColor
       onClick={(e) => onClick(e, color)}
       className={className}
-      size={printName ? "22px" : "30px"}
+      size={size ? size : printName ? "22px" : "30px"}
       color={color.hex_value}
     >
       {printName && color.colour_name}

@@ -8,16 +8,15 @@ import Colors from "../itemComponents/Colors";
 import AddToCart from "../itemComponents/addToCart";
 import BuyNow from "../itemComponents/BuyNow";
 import CartModal from "../cart/CartModal";
-import { useState } from "react";
 
-const ItemOpened = ({ item, setItemsOnCart, itemsOnCart }) => {
-  const [modalTitle, setModalTitle] = useState("");
-
-  const openCartModal = (title) => {
-    setModalTitle(title);
-    document.querySelector(".cart__modal").classList.add("open");
-  };
-
+const ItemOpened = ({
+  item,
+  setItemsOnCart,
+  itemsOnCart,
+  setCartOpen,
+  openCartModal,
+  modalTitle,
+}) => {
   return (
     <StyledItemOpened>
       <CartModal
@@ -25,6 +24,7 @@ const ItemOpened = ({ item, setItemsOnCart, itemsOnCart }) => {
         title={modalTitle}
         setItemsOnCart={setItemsOnCart}
         itemsOnCart={itemsOnCart}
+        setCartOpen={setCartOpen}
       />
       <Image item={item} />
       <Name item={item} />

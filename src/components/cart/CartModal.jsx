@@ -1,20 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Color from "../itemComponents/Color";
 import StyledCartModal from "../styles/CartModal.styled";
 import AddToCart from "../itemComponents/addToCart";
 import BuyNow from "../itemComponents/BuyNow";
+import EditBtn from "../cart/EditBtn";
 
-const CartModal = ({ item, title, setItemsOnCart, itemsOnCart }) => {
-  const [selectedColor, setSelectedColor] = useState(null);
-  const [itemQuantity, setItemQuantity] = useState(1);
-  const [quantityValue, setQuantityValue] = useState(1);
+const CartModal = ({
+  item,
+  title,
+  setItemsOnCart,
+  itemsOnCart,
+  setCartOpen,
+  setItemToEdit,
+}) => {
+  const [selectedColor, setSelectedColor] = useState(
+    item.selected_color || null
+  );
+  const [itemQuantity, setItemQuantity] = useState(item.quantity || 1);
+  const [quantityValue, setQuantityValue] = useState(item.quantity || 1);
   const [advice, setAdvice] = useState("");
+
+  useEffect(() => {
+    const colors = document.querySelectorAll(".modal__color");
+    for (let i = 0; i < colors.length; i++) {
+      const color = colors[i];
+      if (
+        selectedColor &&
+        color.getAttribute("color") === selectedColor.hex_value
+      ) {
+        color.classList.add("selected");
+      }
+    }
+  }, [selectedColor]);
 
   const cartItem = () => {
     return {
       name: item.name,
       brand: item.brand,
       img: item.image_link,
+      product_colors: item.product_colors,
       selected_color: selectedColor,
       price: item.price,
       quantity: itemQuantity,
@@ -22,27 +46,39 @@ const CartModal = ({ item, title, setItemsOnCart, itemsOnCart }) => {
   };
 
   const addItemToCart = () => {
-    let equalItem = itemsOnCart.find(
-      (itemOnCart) =>
-        itemOnCart.name === item.name &&
-        itemOnCart.selected_color === selectedColor
-    );
     if (!!colors[0] && selectedColor === null) {
       setAdvice("*You must select the color to continue");
-    } else if (!!equalItem) {
-      const index = itemsOnCart.indexOf(equalItem);
-      let newItems = JSON.parse(JSON.stringify(itemsOnCart));
-      newItems[index].quantity += itemQuantity;
-      setItemsOnCart(newItems);
     } else {
-      const item = cartItem();
-      setAdvice("");
-      setItemsOnCart(itemsOnCart.concat(item));
+      let equalItem = itemsOnCart.find(
+        (itemOnCart) =>
+          itemOnCart.name === item.name &&
+          (!selectedColor
+            ? true
+            : selectedColor &&
+              itemOnCart.selected_color.hex_value === selectedColor.hex_value)
+      );
+      if (!!equalItem) {
+        const index = itemsOnCart.indexOf(equalItem);
+        let newItems = JSON.parse(JSON.stringify(itemsOnCart));
+        newItems[index].quantity += itemQuantity;
+        setItemsOnCart(newItems);
+        closeModal();
+        goToCart();
+      } else {
+        const item = cartItem();
+        setItemsOnCart(itemsOnCart.concat(item));
+        closeModal();
+        goToCart();
+      }
     }
   };
 
   const onColorClick = (e, color) => {
-    setSelectedColor(color);
+    if (selectedColor === color) {
+      setSelectedColor(null);
+    } else {
+      setSelectedColor(color);
+    }
     const colors = document.querySelectorAll(".modal__color");
     colors.forEach((col) => {
       e.target.getAttribute("color") !== col.getAttribute("color") &&
@@ -54,6 +90,63 @@ const CartModal = ({ item, title, setItemsOnCart, itemsOnCart }) => {
   const closeModal = () => {
     document.querySelector(".cart__modal").classList.remove("open");
     setAdvice("");
+    setQuantityValue(1);
+    setItemQuantity(1);
+    setSelectedColor(null);
+    const colors = document.querySelectorAll(".modal__color");
+    colors.forEach((col) => {
+      col.classList.remove("selected");
+    });
+    setTimeout(() => {
+      setItemToEdit && setItemToEdit(null);
+    }, 500);
+  };
+
+  const goToCart = () => {
+    if (title === "Buy Now") {
+      setTimeout(() => {
+        setCartOpen(true);
+      }, 500);
+    }
+  };
+
+  const editItem = () => {
+    if (!!colors[0] && selectedColor === null) {
+      setAdvice("*You must select the color to continue");
+    } else {
+      let newItems = JSON.parse(JSON.stringify(itemsOnCart));
+      let previousItem = newItems.find(
+        (previous) =>
+          previous.name === item.name &&
+          (!selectedColor
+            ? true
+            : previous.selected_color.hex_value ===
+              item.selected_color.hex_value)
+      );
+      newItems = newItems.filter((item) => item !== previousItem);
+
+      let newItem = JSON.parse(JSON.stringify(previousItem));
+      newItem.quantity = itemQuantity;
+      newItem.selected_color = selectedColor;
+
+      let equalItem = newItems.find(
+        (itemOnCart) =>
+          itemOnCart.name === newItem.name &&
+          (!selectedColor
+            ? true
+            : itemOnCart.selected_color.hex_value ===
+              newItem.selected_color.hex_value)
+      );
+      if (!!equalItem) {
+        const index = newItems.indexOf(equalItem);
+        newItems[index].quantity += itemQuantity;
+        setItemsOnCart(newItems);
+      } else {
+        newItems.push(newItem);
+        setItemsOnCart(newItems);
+      }
+      closeModal();
+    }
   };
 
   const colors = item.product_colors.map((color) => (
@@ -66,7 +159,9 @@ const CartModal = ({ item, title, setItemsOnCart, itemsOnCart }) => {
   ));
 
   return (
-    <StyledCartModal className="cart__modal">
+    <StyledCartModal
+      className={title === "Edit Item" ? "cart__modal open" : "cart__modal"}
+    >
       <div className="bg" onClick={() => closeModal()}></div>
       <div className="content">
         <div className="price">
@@ -106,7 +201,10 @@ const CartModal = ({ item, title, setItemsOnCart, itemsOnCart }) => {
           </div>
           {(title === "Add to Cart" && (
             <AddToCart className="modal__btn" onClick={addItemToCart} />
-          )) || <BuyNow className="modal__btn" onClick={addItemToCart} />}
+          )) ||
+            (title === "Buy Now" && (
+              <BuyNow className="modal__btn" onClick={addItemToCart} />
+            )) || <EditBtn onClick={editItem} />}
         </div>
       </div>
     </StyledCartModal>
