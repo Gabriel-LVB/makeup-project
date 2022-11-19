@@ -163,6 +163,9 @@ function App() {
           openCartModal={openCartModal}
           modalTitle={modalTitle}
           setItemsToAll={setItemsToAll}
+          setCartOpened={setCartOpened}
+          setItemOpened={setItemOpened}
+          allItems={items}
         />
       )) ||
         (itemOpened && (

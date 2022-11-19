@@ -142,7 +142,7 @@ const CartModal = ({
         newItems[index].quantity += itemQuantity;
         setItemsOnCart(newItems);
       } else {
-        newItems.push(newItem);
+        newItems.unshift(newItem);
         setItemsOnCart(newItems);
       }
       closeModal();

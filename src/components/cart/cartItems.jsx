@@ -2,14 +2,10 @@ import styled from "styled-components";
 import CartItem from "./cartItem";
 
 const StyledCartItems = styled.ul`
-  .cart__items__item {
-    border: 1px solid gray;
-    border-radius: 50px;
-    list-style-type: none;
-
-    .img {
-      object-fit: contain;
-      width: 80px;
+  hr {
+    border-top: 2px dotted gray;
+    &:last-child {
+      border: none;
     }
   }
 `;
@@ -20,17 +16,19 @@ const CartItems = ({
   itemsOnCart,
   setItemToEdit,
   deleteItem,
+  onItemClick,
 }) => {
   return (
     <StyledCartItems className="cart__items">
       {items.map((item, i) => (
         <CartItem
-          key={i}
+          key={item.name + i}
           item={item}
           setItemsOnCart={setItemsOnCart}
           itemsOnCart={itemsOnCart}
           setItemToEdit={setItemToEdit}
           deleteItem={deleteItem}
+          onItemClick={onItemClick}
         />
       ))}
     </StyledCartItems>

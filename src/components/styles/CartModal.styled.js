@@ -34,6 +34,9 @@ const StyledCartModal = styled.div`
     border: 2px solid #505050;
     border-radius: 50px 50px 0 0;
     transition: all 0.6s linear;
+    .price h3 {
+      text-align: right;
+    }
   }
 
   .brand {

@@ -12,9 +12,6 @@ const StyledItemOpened = styled(StyledItem)`
     "colors colors"
     "detail detail"
     "btns btns";
-  * {
-    text-align: left;
-  }
 
   .item {
     &__img {

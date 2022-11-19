@@ -7,7 +7,7 @@ const EditBtn = ({ onClick = null, setItemToEdit = null, item }) => {
         (onClick && onClick()) || (setItemToEdit && setItemToEdit(item));
       }}
     >
-      <i className="fa-solid fa-gear"></i> Edit Item
+      <i className="fa-solid fa-pen"></i>
     </StyledBtn>
   );
 };

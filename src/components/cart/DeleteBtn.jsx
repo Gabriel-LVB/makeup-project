@@ -7,7 +7,7 @@ const DeleteBtn = ({ onClick }) => {
         onClick();
       }}
     >
-      <i className="fa-solid fa-trash"></i> Delete Item
+      <i className="fa-solid fa-trash"></i>
     </StyledBtn>
   );
 };
