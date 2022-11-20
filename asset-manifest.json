@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/makeup-project/static/js/main.d338dc5d.js",
+    "main.js": "/makeup-project/static/js/main.20950b3a.js",
     "static/media/Blackout.woff": "/makeup-project/static/media/Blackout.26560cadf591e577a6c1.woff",
     "static/media/backupImage.jpg": "/makeup-project/static/media/backupImage.dcaeaa2802c76d70380e.jpg",
     "index.html": "/makeup-project/index.html",
-    "main.d338dc5d.js.map": "/makeup-project/static/js/main.d338dc5d.js.map"
+    "main.20950b3a.js.map": "/makeup-project/static/js/main.20950b3a.js.map"
   },
   "entrypoints": [
-    "static/js/main.d338dc5d.js"
+    "static/js/main.20950b3a.js"
   ]
 }
