@@ -9,6 +9,7 @@ const StyledItems = styled.section`
   flex-wrap: wrap;
   padding: 20px;
   gap: 20px;
+  background: var(--bg-front);
   .title {
     width: 100%;
     font-size: 2rem;

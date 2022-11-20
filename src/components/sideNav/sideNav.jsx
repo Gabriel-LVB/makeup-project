@@ -1,5 +1,6 @@
 import StyledSideNav from "../styles/SideNav.styled";
 import SNList from "./sideNavList";
+import StyledBtn from "../styles/Button.styled";
 
 const SideNav = ({ brandNames, categoryNames, tagNames, onListItemClick }) => {
   const closeLists = () => {
@@ -21,9 +22,9 @@ const SideNav = ({ brandNames, categoryNames, tagNames, onListItemClick }) => {
 
   return (
     <StyledSideNav className="side-nav">
-      <button className="side-nav__btn" onClick={toggleNav}>
+      <StyledBtn className="side-nav__btn" onClick={toggleNav}>
         <i className="fa-solid fa-bars"></i>
-      </button>
+      </StyledBtn>
       <div className="side-nav__bg" onClick={toggleNav}></div>
       <div className="side-nav__container">
         <h1>Products </h1>

@@ -14,6 +14,7 @@ const StyledItemOpened = styled(StyledItem)`
     "detail detail"
     "btns btns";
   color: var(--text-color-1);
+  background: var(--bg-front);
 
   @media (min-width: 1050px) {
     padding: 5%;

@@ -32,10 +32,8 @@ const StyledSideNav = styled.nav`
         left: 1rem;
         font-size: 1.5rem;
         padding: 0.4rem 0.8rem;
-        background-color: var(--text-color-1);
-        color: var(--bg-front);
-        border: 0;
-        border-radius: 10px;
+        border: 2px solid var(--text-color-1);
+        border-radius: 15px;
         z-index: 1;
         transition: all 0.5s ease-out;
         cursor: pointer;

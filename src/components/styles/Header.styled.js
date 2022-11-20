@@ -86,7 +86,7 @@ const Header = styled.header`
       display: none;
     }
     .search {
-      min-width: 300px;
+      min-width: 0px;
     }
     .cart {
       border-radius: 20px;
