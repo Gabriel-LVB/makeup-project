@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Header = styled.header`
   background-color: #eeeeee;
-  padding: 15px;
+  padding: 40px 15px;
 
   .logo {
     display: flex;
@@ -27,7 +27,7 @@ const Header = styled.header`
 
   .search {
     display: flex;
-    height: 2rem;
+    height: 3rem;
     width: 80%;
 
     [placeholder] {

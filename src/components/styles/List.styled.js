@@ -33,7 +33,7 @@ export default styled.div`
 
     &__toggler {
       background-color: transparent;
-      color: white;
+      color: #202020;
       border: none;
       font-size: 1.5rem;
       cursor: pointer;
@@ -49,7 +49,7 @@ export default styled.div`
       list-style-type: none;
       border-radius: 10px;
       cursor: pointer;
-      background-color: #363636;
+      background-color: #ebebeb;
       transition: all 0.5s ease-in-out, color 0s linear;
       font-size: 1.5rem;
       transform: translateY(-1000px);

@@ -11,7 +11,7 @@ const StyledCartModal = styled.div`
     }
     .content {
       bottom: 0;
-      transition: all 0.6s linear;
+      transition: all 0.4s linear;
     }
   }
 
@@ -106,6 +106,21 @@ const StyledCartModal = styled.div`
         width: 3rem;
         font-size: 1.2rem;
         font-weight: 600;
+      }
+    }
+  }
+  @media (min-width: 1050px) {
+    .content {
+      width: fit-content;
+      height: fit-content;
+      min-width: 500px;
+      border-radius: 50px;
+      margin: auto;
+    }
+    &.open {
+      .content {
+        top: 0;
+        margin: auto;
       }
     }
   }

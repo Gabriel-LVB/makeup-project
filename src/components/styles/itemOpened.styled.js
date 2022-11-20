@@ -2,7 +2,8 @@ import styled from "styled-components";
 import StyledItem from "./Item.styled";
 
 const StyledItemOpened = styled(StyledItem)`
-  width: 99%;
+  width: 95%;
+  margin: 0 auto;
   padding: 20px 15px;
   grid-template-areas:
     "img img"
@@ -13,9 +14,13 @@ const StyledItemOpened = styled(StyledItem)`
     "detail detail"
     "btns btns";
 
+  @media (min-width: 1050px) {
+    padding: 5%;
+  }
+
   .item {
     &__img {
-      width: 70%;
+      width: 35%;
       grid-area: img;
       cursor: initial;
 
@@ -50,7 +55,7 @@ const StyledItemOpened = styled(StyledItem)`
     }
     &__sold {
       grid-area: sold;
-      justify-self: start;
+      justify-self: end;
     }
     &__colors {
       &__container {

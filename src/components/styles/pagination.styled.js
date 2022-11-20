@@ -33,6 +33,11 @@ const StyledPagination = styled.ul`
       }
     }
   }
+  @media (min-width: 800px) {
+    .pagination__item {
+      font-size: 1.2rem;
+    }
+  }
 `;
 
 export default StyledPagination;

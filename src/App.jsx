@@ -109,10 +109,13 @@ function App() {
   };
 
   const onSearchSubmit = (e) => {
+    const searcher = (string) => {
+      return string.toLowerCase().includes(search.toLowerCase());
+    };
     e.preventDefault();
     setSearchedName(search);
-    const newItems = items.filter((item) =>
-      item.name.toLowerCase().includes(search.toLowerCase())
+    const newItems = items.filter(
+      (item) => searcher(item.name) || searcher(item.description)
     );
     setSearchedItems(newItems.length > 0 ? newItems : []);
     setCurrentPage(1);
@@ -148,47 +151,49 @@ function App() {
         onSearchSubmit={onSearchSubmit}
         setCartOpened={setCartOpened}
       />
-      <SideNav
-        brandNames={brandNames}
-        categoryNames={categoryNames}
-        tagNames={tagNames}
-        onListItemClick={onListItemClick}
-      />
-
-      {(cartOpened && (
-        <CartOpen
-          items={itemsOnCart}
-          setItemsOnCart={setItemsOnCart}
-          itemsOnCart={itemsOnCart}
-          openCartModal={openCartModal}
-          modalTitle={modalTitle}
-          setItemsToAll={setItemsToAll}
-          setCartOpened={setCartOpened}
-          setItemOpened={setItemOpened}
-          allItems={items}
+      <main>
+        <SideNav
+          brandNames={brandNames}
+          categoryNames={categoryNames}
+          tagNames={tagNames}
+          onListItemClick={onListItemClick}
         />
-      )) ||
-        (itemOpened && (
-          <ItemOpened
-            item={itemOpened}
+
+        {(cartOpened && (
+          <CartOpen
+            items={itemsOnCart}
             setItemsOnCart={setItemsOnCart}
             itemsOnCart={itemsOnCart}
-            setCartOpen={setCartOpened}
             openCartModal={openCartModal}
             modalTitle={modalTitle}
+            setItemsToAll={setItemsToAll}
+            setCartOpened={setCartOpened}
+            setItemOpened={setItemOpened}
+            allItems={items}
           />
-        )) || (
-          <Items
-            items={searchedItems || items}
-            currentItems={currentItems}
-            title={itemsTitle}
-            pageSetter={setCurrentPage}
-            currentPage={currentPage}
-            searchedName={searchedName}
-            noProductFound={!!searchedItems}
-            openItem={openItem}
-          />
-        )}
+        )) ||
+          (itemOpened && (
+            <ItemOpened
+              item={itemOpened}
+              setItemsOnCart={setItemsOnCart}
+              itemsOnCart={itemsOnCart}
+              setCartOpen={setCartOpened}
+              openCartModal={openCartModal}
+              modalTitle={modalTitle}
+            />
+          )) || (
+            <Items
+              items={searchedItems || items}
+              currentItems={currentItems}
+              title={itemsTitle}
+              pageSetter={setCurrentPage}
+              currentPage={currentPage}
+              searchedName={searchedName}
+              noProductFound={!!searchedItems}
+              openItem={openItem}
+            />
+          )}
+      </main>
     </div>
   );
 }

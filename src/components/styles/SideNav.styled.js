@@ -1,71 +1,83 @@
 import styled from "styled-components";
 
 const StyledSideNav = styled.nav`
-  &.open {
+  flex: 0 0 30%;
+  @media (max-width: 1050px) {
+    &.open {
+      .side-nav {
+        &__bg {
+          background-color: rgba(0, 0, 0, 0.5);
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+
+        &__container {
+          left: 0;
+          width: max-content;
+          transform: translateX(0);
+        }
+
+        &__btn {
+          transform: translateX(80vw);
+        }
+      }
+    }
     .side-nav {
-      &__bg {
-        background-color: rgba(0, 0, 0, 0.5);
+      &__btn {
         position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        top: 1.5rem;
+        left: 1rem;
+        font-size: 1.5rem;
+        padding: 0.4rem 0.8rem;
+        background-color: black;
+        color: white;
+        border: 0;
+        border-radius: 10px;
+        z-index: 1;
+        transition: all 0.5s ease-out;
+        cursor: pointer;
+        display: initial;
+      }
+
+      &__bg {
+        background-color: rgba(0, 0, 0, 0);
+        transition: all 0.5s ease-out;
       }
 
       &__container {
-        left: 0;
-        width: max-content;
-        transform: translateX(0);
-      }
+        background-color: white;
+        color: #202020;
+        padding: 10px;
+        overflow: auto;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        transition: all 0.5s ease-out;
+        transform: translateX(-100%);
 
-      &__btn {
-        transform: translateX(80vw);
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
     }
   }
-  .side-nav {
-    &__btn {
-      position: fixed;
-      top: 1.5rem;
-      left: 1rem;
-      font-size: 1.5rem;
-      padding: 0.4rem 0.8rem;
-      background-color: black;
-      color: white;
-      border: 0;
-      border-radius: 10px;
-      z-index: 1;
-      transition: all 0.5s ease-out;
-      cursor: pointer;
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+  }
+  @media (min-width: 1050px) {
+    .side-nav__btn {
+      display: none;
     }
 
-    &__bg {
-      background-color: rgba(0, 0, 0, 0);
-      transition: all 0.5s ease-out;
-    }
-
-    &__container {
-      background-color: #171717;
-      color: white;
-      padding: 10px;
-      overflow: auto;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      transition: all 0.5s ease-out;
-      transform: translateX(-100%);
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-
-      h1 {
-        text-align: center;
-        margin-bottom: 1rem;
-        margin-top: 2rem;
-        font-size: 2.3rem;
-      }
-    }
+    border: 1px dotted black;
+    border-right: 3px solid #505050;
+    border-left: 3px solid #505050;
   }
 `;
 

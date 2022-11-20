@@ -37,8 +37,8 @@ const CartOpen = ({
   return (
     <StyledCart>
       <div className="cart__header">
-        {!!items[0] && <h1 className="cart__title">My Cart</h1>}
-        <ContinueOrder />
+        <h1 className="cart__title">My Cart</h1>
+        {!!items[0] && <ContinueOrder />}
       </div>
       <hr />
       {(!!items[0] && (

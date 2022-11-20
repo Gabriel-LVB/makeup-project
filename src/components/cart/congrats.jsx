@@ -24,7 +24,7 @@ const Congrats = ({ setCongratsOpen }) => {
         }}
       ></div>
       <div className="content">
-        <h1>I am realy happy that you are enjoying this project :D</h1>
+        <h1>I am really happy that you are enjoying this project :D</h1>
         <h2>Please check out my other projects and my Linkedin</h2>
       </div>
     </StyledCongrats>
