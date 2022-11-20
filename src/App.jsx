@@ -96,7 +96,9 @@ function App() {
         : "tag_list";
     name = title === "category" ? name.replace(" ", "_") : name;
     const filteredItems = dataBase.items.filter((item) =>
-      title !== "tag_list" ? item[title] === name : item.tag_list.includes(name)
+      Number(item.price) > 0 && title !== "tag_list"
+        ? item[title] === name
+        : item.tag_list.includes(name)
     );
     setItems(filteredItems);
     setCurrentPage(1);
