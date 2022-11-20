@@ -17,6 +17,8 @@ const StyledItems = styled.section`
     color: var(--text-color-1);
   }
   .subtitle {
+    padding-left: 20px;
+
     width: 100%;
     font-size: 1.2rem;
     margin-top: -1rem;
