@@ -11,7 +11,9 @@ import { lightTheme, darkTheme } from "./theme";
 import useTheme from "./useTheme";
 
 function App() {
-  const [items, setItems] = useState(dataBase.items);
+  const [items, setItems] = useState(
+    dataBase.items.filter((item) => Number(item.price) > 0)
+  );
   const [brandNames, setBrandNames] = useState([]);
   const [categoryNames, setCategoryNames] = useState([]);
   const [tagNames, setTagNames] = useState([]);
@@ -105,7 +107,7 @@ function App() {
   };
 
   const setItemsToAll = () => {
-    setItems(dataBase.items);
+    setItems(dataBase.items.filter((item) => Number(item.price) > 0));
     setCurrentPage(1);
     setItemsTitle("All Products");
     setSearchedName(null);

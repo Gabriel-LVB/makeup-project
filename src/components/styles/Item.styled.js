@@ -4,6 +4,7 @@ export default styled.div`
   width: 320px;
   margin: 20px auto;
   display: grid;
+  grid-template-rows: minmax(0px, 60%) auto auto auto;
   grid-template-areas:
     "img img"
     "name name"
@@ -20,10 +21,12 @@ export default styled.div`
 
   .item {
     &__img {
-      height: 100%;
-      padding: 10px;
+      max-width: 90%;
+      max-height: 100%;
       object-fit: contain;
+      padding: 10px;
       grid-area: img;
+      border-radius: 30px;
       cursor: pointer;
 
       &:hover {

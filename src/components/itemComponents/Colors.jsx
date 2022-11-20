@@ -16,9 +16,13 @@ const Colors = ({ colors, showNames = false }) => {
       )}
       <StyledColors className="item__colors" showNames={showNames}>
         {colors &&
-          (!showNames ? colors.slice(0, 10) : colors).map((color) => {
+          (!showNames ? colors.slice(0, 10) : colors).map((color, i) => {
             return (
-              <Color key={color.hex_value} color={color} showName={showNames} />
+              <Color
+                key={color.hex_value + colors.length + i}
+                color={color}
+                showName={showNames}
+              />
             );
           })}
       </StyledColors>
