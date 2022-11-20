@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/static/js/main.fb0b13e1.js",
+    "static/media/Blackout.woff": "/static/media/Blackout.26560cadf591e577a6c1.woff",
+    "static/media/backupImage.jpg": "/static/media/backupImage.dcaeaa2802c76d70380e.jpg",
+    "index.html": "/index.html",
+    "main.fb0b13e1.js.map": "/static/js/main.fb0b13e1.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.fb0b13e1.js"
+  ]
+}
