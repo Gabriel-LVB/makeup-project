@@ -6,7 +6,7 @@ const StyledSideNav = styled.nav`
     &.open {
       .side-nav {
         &__bg {
-          background-color: rgba(0, 0, 0, 0.5);
+          background-color: var(--semi-transparent);
           position: fixed;
           top: 0;
           bottom: 0;
@@ -32,8 +32,8 @@ const StyledSideNav = styled.nav`
         left: 1rem;
         font-size: 1.5rem;
         padding: 0.4rem 0.8rem;
-        background-color: black;
-        color: white;
+        background-color: var(--text-color-1);
+        color: var(--bg-front);
         border: 0;
         border-radius: 10px;
         z-index: 1;
@@ -43,13 +43,13 @@ const StyledSideNav = styled.nav`
       }
 
       &__bg {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: var(--transparent);
         transition: all 0.5s ease-out;
       }
 
       &__container {
-        background-color: white;
-        color: #202020;
+        background-color: var(--bg-front);
+        color: var(--text-color-1);
         padding: 10px;
         overflow: auto;
         position: fixed;
@@ -69,15 +69,16 @@ const StyledSideNav = styled.nav`
     margin-bottom: 1rem;
     margin-top: 2rem;
     font-size: 2rem;
+    color: var(--text-color-1);
   }
   @media (min-width: 1050px) {
     .side-nav__btn {
       display: none;
     }
 
-    border: 1px dotted black;
-    border-right: 3px solid #505050;
-    border-left: 3px solid #505050;
+    border: 1px dotted var(--text-color-1);
+    border-right: 3px solid var(--text-color-2);
+    border-left: 3px solid var(--text-color-2);
   }
 `;
 

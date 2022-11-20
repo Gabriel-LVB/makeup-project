@@ -6,7 +6,7 @@ const StyledCartModal = styled.div`
     .bg {
       top: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: var(--semi-transparent);
       transition: all 0.2s ease-out;
     }
     .content {
@@ -16,7 +16,7 @@ const StyledCartModal = styled.div`
   }
 
   .bg {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: var(--transparent);
     position: fixed;
     left: 0;
     right: 0;
@@ -25,13 +25,13 @@ const StyledCartModal = styled.div`
     transition: all 0.2s ease-out;
   }
   .content {
-    background-color: white;
+    background-color: var(--bg-front);
     position: fixed;
     bottom: -100%;
     left: -5px;
     right: -5px;
     padding: 25px;
-    border: 2px solid #505050;
+    border: 2px solid var(--text-color-2);
     border-radius: 50px 50px 0 0;
     transition: all 0.6s linear;
     .price h3 {
@@ -40,7 +40,7 @@ const StyledCartModal = styled.div`
   }
 
   .brand {
-    color: #202020;
+    color: var(--text-color-1);
     text-transform: capitalize;
     font-weight: 600;
   }
@@ -87,7 +87,7 @@ const StyledCartModal = styled.div`
           transition: all 0.2s ease-out;
         }
         &.selected::before {
-          border-bottom: 5px solid black;
+          border-bottom: 5px solid var(--text-color-1);
           transform: scale(1.2);
         }
       }
@@ -106,6 +106,12 @@ const StyledCartModal = styled.div`
         width: 3rem;
         font-size: 1.2rem;
         font-weight: 600;
+        background-color: var(--bg-front);
+        border: none;
+        color: var(--text-color-1);
+        &::-webkit-inner-spin-button {
+          padding: 5px 5px;
+        }
       }
     }
   }

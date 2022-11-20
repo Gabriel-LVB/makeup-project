@@ -13,6 +13,7 @@ const StyledItemOpened = styled(StyledItem)`
     "colors colors"
     "detail detail"
     "btns btns";
+  color: var(--text-color-1);
 
   @media (min-width: 1050px) {
     padding: 5%;
@@ -85,7 +86,7 @@ const StyledItemOpened = styled(StyledItem)`
         width: fit-content;
       }
       &__since {
-        color: #303030;
+        color: var(--text-color-2);
         font-weight: 600;
         width: fit-content;
       }
@@ -95,13 +96,9 @@ const StyledItemOpened = styled(StyledItem)`
       }
       .table__row {
         text-transform: capitalize;
-        background-color: #ededed;
+        background-color: var(--bg-back);
         * {
-          padding: 3px;
-        }
-        &__title {
-        }
-        &__content {
+          padding: 6px;
         }
       }
     }

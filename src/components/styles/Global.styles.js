@@ -2,6 +2,17 @@ import { createGlobalStyle } from "styled-components";
 import blackout from "../../Blackout.woff";
 
 const GlobalStyles = createGlobalStyle`
+  :root{
+  --bg-front: ${({ theme }) => theme.backgroundContent};
+  --bg-back: ${({ theme }) => theme.background};
+  --primary: ${({ theme }) => theme.primary};
+  --text-color-1: ${({ theme }) => theme.color};
+  --text-color-2: ${({ theme }) => theme.color2};
+  --text-color-3: ${({ theme }) => theme.color3};
+  --transparent: ${({ theme }) => theme.transparent};
+  --semi-transparent: ${({ theme }) => theme.semiTransparent};
+
+  }
   @font-face {
     font-family: Blackout;
     src: url(${blackout});
@@ -16,18 +27,16 @@ const GlobalStyles = createGlobalStyle`
         Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
   body{
-    background-color: #eeeeee;
+    background-color: var(--bg-back);
 
   }
   #root{
-      max-width: 1300px;
+      max-width: 1200px;
       margin: auto;
-
-
   }
 
   main{
-    background-color: #eeeeee;
+    background-color: var(--bg-back);
     &>*{
         background: white;
       }
@@ -37,9 +46,10 @@ const GlobalStyles = createGlobalStyle`
       display: flex;
       gap: 10px;
       &>*{
-        background: white;
+        background: var(--bg-front);
         border-radius: 50px;
       }
+      padding-bottom: 30px;
     }
   }
 `;

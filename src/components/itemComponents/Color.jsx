@@ -9,7 +9,7 @@ const StyledColor = styled.li`
     background-color: ${(props) => props.color};
     height: ${(props) => props.size};
     min-width: ${(props) => props.size};
-    border: 2px solid black;
+    border: 2px solid var(--text-color-1);
     border-radius: 100%;
     margin: 0 5px;
     display: inline-block;

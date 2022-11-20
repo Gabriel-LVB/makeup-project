@@ -13,9 +13,10 @@ export default styled.div`
   gap: 10px;
   padding: 15px;
   border-radius: 50px;
-  border: 1px dotted black;
-  border-right: 3px solid #505050;
-  border-left: 3px solid #505050;
+  border: 1px dotted var(--text-color-1);
+  border-right: 3px solid var(--text-color-2);
+  border-left: 3px solid var(--text-color-2);
+  color: var(--text-color-1);
 
   .item {
     &__img {
@@ -37,7 +38,7 @@ export default styled.div`
       cursor: pointer;
 
       &:hover {
-        text-decoration: underline #cc71ca;
+        text-decoration: underline var(--primary);
       }
     }
     &__price {
@@ -48,9 +49,9 @@ export default styled.div`
     &__rating__stars {
       grid-area: rating;
       font-size: 1.2rem;
-
-      /* justify-self: start; */
-      color: #cc71ca;
+      i {
+        color: var(--primary);
+      }
     }
     &__colors {
       &__container {

@@ -4,6 +4,8 @@ import StyledItemOpened from "./itemOpened.styled";
 const StyledCart = styled(StyledItemOpened)`
   display: block;
   padding: 5%;
+  color: var(--text-color-1);
+  background: var(--bg-front);
 
   .cart__header {
     display: flex;
@@ -12,7 +14,7 @@ const StyledCart = styled(StyledItemOpened)`
   }
 
   .cart__title {
-    color: #404040;
+    color: var(--text-color-1);
     margin-bottom: 10px;
   }
 
@@ -21,7 +23,8 @@ const StyledCart = styled(StyledItemOpened)`
   }
 
   hr {
-    border-top: 2px dashed gray;
+    border: none;
+    border-top: 2px dashed var(--text-color-3);
     width: 90%;
     margin: 10px auto;
   }
@@ -32,7 +35,7 @@ const StyledCart = styled(StyledItemOpened)`
     color: gray;
     i {
       font-size: 8rem;
-      color: lightgray;
+      color: var(--text-color-3);
     }
     h2 {
       text-align: center;
@@ -48,10 +51,10 @@ const StyledCart = styled(StyledItemOpened)`
   .order {
     margin: 3px 20px;
     padding: 3px 0;
-    color: #404040;
+    color: var(--text-color-1);
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px dotted #909090;
+    border-bottom: 2px dotted var(--text-color-3);
 
     &.total {
       font-size: 1.5rem;

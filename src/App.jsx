@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import Items from "./components/main/items";
 import ItemOpened from "./components/main/itemOpened";
 import CartOpen from "./components/cart/cartOpened";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "./theme";
+import useTheme from "./useTheme";
 
 function App() {
   const [items, setItems] = useState(dataBase.items);
@@ -21,6 +24,9 @@ function App() {
   const [cartOpened, setCartOpened] = useState(false);
   const [itemsOnCart, setItemsOnCart] = useState([]);
   const [modalTitle, setModalTitle] = useState("");
+  const [theme, themeToggler] = useTheme();
+
+  const themeMode = theme === "light" ? lightTheme : darkTheme;
 
   const getInitialItems = () => {
     setBrandNames(
@@ -141,60 +147,65 @@ function App() {
   );
 
   return (
-    <div>
-      <GlobalStyles />
-      <Header
-        setItemsToAll={setItemsToAll}
-        search={search}
-        setSearch={setSearch}
-        title={itemsTitle}
-        onSearchSubmit={onSearchSubmit}
-        setCartOpened={setCartOpened}
-      />
-      <main>
-        <SideNav
-          brandNames={brandNames}
-          categoryNames={categoryNames}
-          tagNames={tagNames}
-          onListItemClick={onListItemClick}
+    <ThemeProvider theme={themeMode}>
+      <div>
+        <GlobalStyles />
+        <Header
+          setItemsToAll={setItemsToAll}
+          search={search}
+          setSearch={setSearch}
+          title={itemsTitle}
+          onSearchSubmit={onSearchSubmit}
+          setCartOpened={setCartOpened}
+          itemsOnCart={itemsOnCart}
+          theme={theme}
+          themeToggler={themeToggler}
         />
-
-        {(cartOpened && (
-          <CartOpen
-            items={itemsOnCart}
-            setItemsOnCart={setItemsOnCart}
-            itemsOnCart={itemsOnCart}
-            openCartModal={openCartModal}
-            modalTitle={modalTitle}
-            setItemsToAll={setItemsToAll}
-            setCartOpened={setCartOpened}
-            setItemOpened={setItemOpened}
-            allItems={items}
+        <main>
+          <SideNav
+            brandNames={brandNames}
+            categoryNames={categoryNames}
+            tagNames={tagNames}
+            onListItemClick={onListItemClick}
           />
-        )) ||
-          (itemOpened && (
-            <ItemOpened
-              item={itemOpened}
+
+          {(cartOpened && (
+            <CartOpen
+              items={itemsOnCart}
               setItemsOnCart={setItemsOnCart}
               itemsOnCart={itemsOnCart}
-              setCartOpen={setCartOpened}
               openCartModal={openCartModal}
               modalTitle={modalTitle}
+              setItemsToAll={setItemsToAll}
+              setCartOpened={setCartOpened}
+              setItemOpened={setItemOpened}
+              allItems={items}
             />
-          )) || (
-            <Items
-              items={searchedItems || items}
-              currentItems={currentItems}
-              title={itemsTitle}
-              pageSetter={setCurrentPage}
-              currentPage={currentPage}
-              searchedName={searchedName}
-              noProductFound={!!searchedItems}
-              openItem={openItem}
-            />
-          )}
-      </main>
-    </div>
+          )) ||
+            (itemOpened && (
+              <ItemOpened
+                item={itemOpened}
+                setItemsOnCart={setItemsOnCart}
+                itemsOnCart={itemsOnCart}
+                setCartOpen={setCartOpened}
+                openCartModal={openCartModal}
+                modalTitle={modalTitle}
+              />
+            )) || (
+              <Items
+                items={searchedItems || items}
+                currentItems={currentItems}
+                title={itemsTitle}
+                pageSetter={setCurrentPage}
+                currentPage={currentPage}
+                searchedName={searchedName}
+                noProductFound={!!searchedItems}
+                openItem={openItem}
+              />
+            )}
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
 

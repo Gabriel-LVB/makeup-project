@@ -11,16 +11,18 @@ const StyledPagination = styled.ul`
   .pagination__item {
     list-style-type: none;
     padding: 5px 8px;
-    border: 1px dotted #909090;
-    border-bottom: 2px solid #101010;
+    border: 1px dotted var(--text-color-3);
+    border-bottom: 2px solid var(--text-color-1);
     cursor: pointer;
     border-radius: 10px;
     font-size: 0.9rem;
+    transition: all 0.2s ease-out;
+    color: var(--text-color-1);
 
     &:hover,
     &.current {
-      background-color: #101010;
-      color: white;
+      background-color: var(--text-color-1);
+      color: var(--bg-front);
     }
 
     &.dots {
@@ -28,8 +30,8 @@ const StyledPagination = styled.ul`
       cursor: default;
 
       &:hover {
-        background-color: white;
-        color: black;
+        background-color: var(--bg-front);
+        color: var(--text-color-1);
       }
     }
   }

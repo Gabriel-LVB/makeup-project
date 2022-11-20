@@ -1,3 +1,5 @@
+import StyledBtn from "../styles/Button.styled";
+
 const Search = ({ title, search, setSearch, onSearchSubmit }) => {
   return (
     <form className="search" onSubmit={onSearchSubmit}>
@@ -8,9 +10,9 @@ const Search = ({ title, search, setSearch, onSearchSubmit }) => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <button className="search__btn">
+      <StyledBtn className="search__btn">
         <i className="fa-solid fa-magnifying-glass"></i>
-      </button>
+      </StyledBtn>
     </form>
   );
 };

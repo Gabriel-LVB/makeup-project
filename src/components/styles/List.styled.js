@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 export default styled.div`
+  color: var(--text-color-1);
+
   .side-nav__list {
     padding: 10px 20px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    color: var(--text-color-1);
 
     &.open {
       gap: 5px;
@@ -33,7 +36,7 @@ export default styled.div`
 
     &__toggler {
       background-color: transparent;
-      color: #202020;
+      color: var(--text-color-1);
       border: none;
       font-size: 1.5rem;
       cursor: pointer;
@@ -49,7 +52,7 @@ export default styled.div`
       list-style-type: none;
       border-radius: 10px;
       cursor: pointer;
-      background-color: #ebebeb;
+      background-color: var(--bg-back);
       transition: all 0.5s ease-in-out, color 0s linear;
       font-size: 1.5rem;
       transform: translateY(-1000px);
@@ -57,7 +60,7 @@ export default styled.div`
       text-transform: Capitalize;
 
       &:active {
-        color: #cc71ca;
+        color: var(--primary);
       }
     }
   }

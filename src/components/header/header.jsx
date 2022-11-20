@@ -1,6 +1,7 @@
 import HeaderStyled from "../styles/Header.styled";
 import Search from "./Search";
 import Cart from "./Cart";
+import ThemeTogglerBtn from "./themeToggler";
 
 const Header = ({
   setItemsToAll,
@@ -9,6 +10,9 @@ const Header = ({
   title,
   onSearchSubmit,
   setCartOpened,
+  itemsOnCart,
+  theme,
+  themeToggler,
 }) => {
   return (
     <HeaderStyled>
@@ -22,7 +26,8 @@ const Header = ({
           title={title}
           onSearchSubmit={onSearchSubmit}
         />
-        <Cart setCartOpen={setCartOpened} />
+        <Cart setCartOpen={setCartOpened} itemsOnCart={itemsOnCart} />
+        <ThemeTogglerBtn theme={theme} onClick={themeToggler} />
       </div>
     </HeaderStyled>
   );

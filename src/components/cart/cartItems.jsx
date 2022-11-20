@@ -3,7 +3,8 @@ import CartItem from "./cartItem";
 
 const StyledCartItems = styled.ul`
   hr {
-    border-top: 2px dotted gray;
+    border: none;
+    border-top: 2px dotted var(--text-color-3);
     &:last-child {
       border: none;
     }

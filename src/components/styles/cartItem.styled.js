@@ -31,7 +31,7 @@ const StyledCartItem = styled.li`
     text-transform: capitalize;
     cursor: pointer;
     &:hover {
-      text-decoration: underline #cc71ca;
+      text-decoration: underline var(--primary);
     }
   }
   .price_btns {
@@ -51,20 +51,20 @@ const StyledCartItem = styled.li`
   }
   .brand {
     grid-area: brand;
-    font-size: 1.1rem;
-    color: #909090;
+    font-size: 1.2rem;
+    color: var(--text-color-2);
     text-transform: capitalize;
   }
   .quantity {
     grid-area: qnt;
-    color: #505050;
+    color: var(--text-color-2);
     text-transform: capitalize;
   }
   .color {
     grid-area: color;
     font-weight: 700;
     font-size: 1.1rem;
-    color: #505050;
+    color: var(--text-color-2);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -79,7 +79,7 @@ const StyledCartItem = styled.li`
     flex-wrap: wrap;
     button {
       padding: 10px 13px;
-      border: 1px solid black;
+      border: 1px solid var(--text-color-1);
     }
   }
 `;
