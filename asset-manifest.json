@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/static/js/main.fb0b13e1.js",
-    "static/media/Blackout.woff": "/static/media/Blackout.26560cadf591e577a6c1.woff",
-    "static/media/backupImage.jpg": "/static/media/backupImage.dcaeaa2802c76d70380e.jpg",
-    "index.html": "/index.html",
-    "main.fb0b13e1.js.map": "/static/js/main.fb0b13e1.js.map"
+    "main.js": "/makeup-project/static/js/main.d338dc5d.js",
+    "static/media/Blackout.woff": "/makeup-project/static/media/Blackout.26560cadf591e577a6c1.woff",
+    "static/media/backupImage.jpg": "/makeup-project/static/media/backupImage.dcaeaa2802c76d70380e.jpg",
+    "index.html": "/makeup-project/index.html",
+    "main.d338dc5d.js.map": "/makeup-project/static/js/main.d338dc5d.js.map"
   },
   "entrypoints": [
-    "static/js/main.fb0b13e1.js"
+    "static/js/main.d338dc5d.js"
   ]
 }
