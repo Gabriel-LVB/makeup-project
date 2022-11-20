@@ -35,7 +35,12 @@ function App() {
       Array.from(
         new Set(
           dataBase.items
-            .filter((item) => item.brand !== null && item.brand.length > 0)
+            .filter(
+              (item) =>
+                Number(item.price) > 0 &&
+                item.brand !== null &&
+                item.brand.length > 0
+            )
             .map((item) => item.brand && item.brand.replace("_", " "))
         )
       )
@@ -45,16 +50,19 @@ function App() {
         new Set(
           dataBase.items
             .filter(
-              (item) => item.category !== null && item.category.length > 0
+              (item) =>
+                Number(item.price) > 0 &&
+                item.category !== null &&
+                item.category.length > 0
             )
             .map((item) => item.category && item.category.replace("_", " "))
         )
       )
     );
     let tags = [];
-    dataBase.items.map((item) =>
-      item.tag_list.map((tag) => tag && tags.push(tag))
-    );
+    dataBase.items
+      .filter((item) => Number(item.price) > 0)
+      .map((item) => item.tag_list.map((tag) => tag && tags.push(tag)));
     setTagNames(Array.from(new Set(tags)));
     setItemsOnCart(getItemsFromLocalStorage() || []);
   };
