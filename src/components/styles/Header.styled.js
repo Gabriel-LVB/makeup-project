@@ -39,6 +39,7 @@ const Header = styled.header`
     &__input {
       border: 1px solid var(--text-color-1);
       background-color: var(--bg-front);
+      color: var(--text-color-1);
       border-right: none;
       border-radius: 20px 0px 0px 20px;
       padding-left: 1rem;

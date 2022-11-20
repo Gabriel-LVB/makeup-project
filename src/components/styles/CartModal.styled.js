@@ -103,10 +103,11 @@ const StyledCartModal = styled.div`
       font-size: 1.3rem;
       font-weight: 600;
       input {
-        width: 3rem;
+        width: 4rem;
         font-size: 1.2rem;
         font-weight: 600;
-        background-color: var(--bg-front);
+        background-color: var(--bg-back);
+        padding: 3px 0 3px 5px;
         border: none;
         color: var(--text-color-1);
         &::-webkit-inner-spin-button {
