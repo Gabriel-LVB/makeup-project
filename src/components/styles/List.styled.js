@@ -41,7 +41,7 @@ export default styled.div`
       font-size: 1.5rem;
       cursor: pointer;
       transform: rotate(-90deg);
-      transition: all 0.3s linear;
+      transition: all 0.5s linear;
 
       &.open {
         transform: rotate(0);
@@ -55,7 +55,7 @@ export default styled.div`
       background-color: var(--bg-back);
       transition: all 0.5s ease-in-out, color 0s linear;
       font-size: 1.5rem;
-      transform: translateY(-1000px);
+      transform: translateY(100vh);
       height: 0;
       text-transform: Capitalize;
 

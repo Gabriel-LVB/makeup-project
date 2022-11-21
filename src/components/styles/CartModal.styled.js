@@ -121,6 +121,7 @@ const StyledCartModal = styled.div`
       width: fit-content;
       height: fit-content;
       min-width: 500px;
+      max-width: 60%;
       border-radius: 50px;
       margin: auto;
     }
