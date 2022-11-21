@@ -55,7 +55,7 @@ export default styled.div`
       background-color: var(--bg-back);
       transition: all 0.5s ease-in-out, color 0s linear;
       font-size: 1.5rem;
-      transform: translateY(100vh);
+      transform: translateY(-100vh);
       height: 0;
       text-transform: Capitalize;
 
