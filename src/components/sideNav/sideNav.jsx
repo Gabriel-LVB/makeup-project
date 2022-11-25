@@ -1,8 +1,9 @@
 import StyledSideNav from "../styles/SideNav.styled";
 import SNList from "./sideNavList";
 import StyledBtn from "../styles/Button.styled";
+import { brandNames, categoryNames, tagNames } from "../../features/names";
 
-const SideNav = ({ brandNames, categoryNames, tagNames, onListItemClick }) => {
+const SideNav = ({ onListItemClick }) => {
   const closeLists = () => {
     const lists = document.querySelectorAll(".side-nav__list");
     const togglers = document.querySelectorAll(".side-nav__list__toggler");

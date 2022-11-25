@@ -1,5 +1,8 @@
-const CartTotal = ({ items }) => {
-  const subtotal = items
+import { useSelector } from "react-redux";
+
+const CartTotal = () => {
+  const itemsOnCart = useSelector((state) => state.cart.value.items);
+  const subtotal = itemsOnCart
     .map((item) => item.price * item.quantity)
     .reduce((a, c) => a + c, 0);
   const discount = (subtotal * 0.1).toFixed(2);

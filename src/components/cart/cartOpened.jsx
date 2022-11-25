@@ -7,52 +7,47 @@ import ContinueOrder from "./continueOrder";
 import Congrats from "./congrats";
 
 import ChooseNewProducts from "./ChooseNewProducts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setCartOpened, setModalTitle } from "../../reducers/cart";
+import { setItemOpened } from "../../reducers/items";
 
-const CartOpen = ({
-  items,
-  setItemsOnCart,
-  itemsOnCart,
-  setItemsToAll,
-  allItems,
-  setCartOpened,
-  setItemOpened,
-}) => {
+const CartOpen = ({ setItemsToAll }) => {
+  const dispatch = useDispatch();
   const [itemToEdit, setItemToEdit] = useState(null);
-
-  const deleteItem = (item) => {
-    setItemsOnCart(
-      [...itemsOnCart].filter((itemOnCart) => itemOnCart !== item)
-    );
-  };
+  const itemsOnCart = useSelector((state) => state.cart.value.items);
+  const allItems = useSelector((state) => state.items.value.items);
 
   const onItemClick = (item) => {
     const itemOnAll = allItems.find(
       (thisItem) => thisItem.name === item.name && thisItem.brand === item.brand
     );
-    setItemOpened(itemOnAll);
-    setCartOpened(false);
+    dispatch(setItemOpened(itemOnAll));
+    dispatch(setCartOpened(false));
   };
+
+  useEffect(() => {
+    if (itemToEdit) {
+      dispatch(setModalTitle("Edit Item"));
+    }
+  }, [itemToEdit, dispatch]);
 
   return (
     <StyledCart>
       <div className="cart__header">
         <h1 className="cart__title">My Cart</h1>
-        {!!items[0] && <ContinueOrder />}
+        {!!itemsOnCart[0] && <ContinueOrder />}
       </div>
       <hr />
-      {(!!items[0] && (
+      {(!!itemsOnCart[0] && (
         <>
           <CartItems
-            items={items}
-            setItemsOnCart={setItemsOnCart}
             itemsOnCart={itemsOnCart}
             setItemToEdit={setItemToEdit}
-            deleteItem={deleteItem}
             onItemClick={onItemClick}
           />
           <hr />
-          <CartTotal items={items} />
+          <CartTotal />
           <div className="continue__container">
             <ContinueOrder className="continue__bottom" />
           </div>
@@ -65,13 +60,7 @@ const CartOpen = ({
         </div>
       )}
       {itemToEdit && (
-        <CartModal
-          title={"Edit Item"}
-          item={itemToEdit}
-          setItemsOnCart={setItemsOnCart}
-          itemsOnCart={itemsOnCart}
-          setItemToEdit={setItemToEdit}
-        />
+        <CartModal item={itemToEdit} setItemToEdit={setItemToEdit} />
       )}
       <Congrats />
     </StyledCart>

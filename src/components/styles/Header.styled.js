@@ -49,6 +49,9 @@ const Header = styled.header`
       &:focus {
         outline: 1px solid var(--primary);
       }
+      &::placeholder {
+        text-transform: capitalize;
+      }
     }
     &__btn {
       border-radius: 0px 20px 20px 0px;

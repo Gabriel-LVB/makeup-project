@@ -26,6 +26,7 @@ const StyledCartItem = styled.li`
     }
   }
   .name {
+    width: fit-content;
     grid-area: name;
     font-size: 1.3rem;
     text-transform: capitalize;

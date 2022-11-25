@@ -1,7 +1,12 @@
 import CartIcon from "../icons/CartIcon";
 import StyledBtn from "../styles/Button.styled";
+import { useSelector, useDispatch } from "react-redux";
+import { setCartOpened } from "../../reducers/cart";
 
-const Cart = ({ setCartOpen, itemsOnCart }) => {
+const Cart = () => {
+  const itemsOnCart = useSelector((state) => state.cart.value.items);
+  const dispatch = useDispatch();
+
   const numberOfItems = itemsOnCart.length;
   const subtotal = itemsOnCart
     .map((item) => item.price * item.quantity)
@@ -9,7 +14,7 @@ const Cart = ({ setCartOpen, itemsOnCart }) => {
 
   return (
     <div className="cart__container">
-      <StyledBtn className="cart" onClick={() => setCartOpen(true)}>
+      <StyledBtn className="cart" onClick={() => dispatch(setCartOpened(true))}>
         <CartIcon />
       </StyledBtn>
       <div className="cart-infos">

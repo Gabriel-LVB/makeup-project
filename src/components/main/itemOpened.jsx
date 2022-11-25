@@ -9,29 +9,16 @@ import AddToCart from "../itemComponents/addToCart";
 import BuyNow from "../itemComponents/BuyNow";
 import CartModal from "../cart/CartModal";
 
-const ItemOpened = ({
-  item,
-  setItemsOnCart,
-  itemsOnCart,
-  setCartOpen,
-  openCartModal,
-  modalTitle,
-}) => {
+const ItemOpened = ({ item, openCartModal, modalTitle }) => {
   return (
     <StyledItemOpened>
-      <CartModal
-        item={item}
-        title={modalTitle}
-        setItemsOnCart={setItemsOnCart}
-        itemsOnCart={itemsOnCart}
-        setCartOpen={setCartOpen}
-      />
+      <CartModal item={item} title={modalTitle} />
       <Image item={item} />
       <Name item={item} />
       <Price price={item.price} />
       <Rating itemRating={item.rating} showNumber={true} />
       <h3 className="item__sold">{item.id} Sold</h3>
-      <Colors colors={item.product_colors} showNames={true} />
+      <Colors colors={item.product_colors} showAll={true} />
       <Details item={item} />
       <div className="item__btns">
         <AddToCart onClick={() => openCartModal("Add to Cart")} />

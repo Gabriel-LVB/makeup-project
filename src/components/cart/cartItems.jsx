@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import CartItem from "./cartItem";
+import { useDispatch } from "react-redux";
+import { setItemsOnCart } from "../../reducers/cart";
 
 const StyledCartItems = styled.ul`
   hr {
@@ -11,22 +13,23 @@ const StyledCartItems = styled.ul`
   }
 `;
 
-const CartItems = ({
-  items,
-  setItemsOnCart,
-  itemsOnCart,
-  setItemToEdit,
-  deleteItem,
-  onItemClick,
-}) => {
+const CartItems = ({ setItemToEdit, onItemClick, itemsOnCart }) => {
+  const dispatch = useDispatch();
+
+  const deleteItem = (item) => {
+    dispatch(
+      setItemsOnCart(
+        [...itemsOnCart].filter((itemOnCart) => itemOnCart !== item)
+      )
+    );
+  };
+
   return (
     <StyledCartItems className="cart__items">
-      {items.map((item, i) => (
+      {itemsOnCart.map((item, i) => (
         <CartItem
           key={item.name + i}
           item={item}
-          setItemsOnCart={setItemsOnCart}
-          itemsOnCart={itemsOnCart}
           setItemToEdit={setItemToEdit}
           deleteItem={deleteItem}
           onItemClick={onItemClick}

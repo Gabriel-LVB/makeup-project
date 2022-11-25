@@ -53,6 +53,7 @@ const StyledSideNav = styled.nav`
         position: fixed;
         top: 0;
         bottom: 0;
+        height: 100vh;
         transition: all 0.5s ease-out;
         transform: translateX(-100%);
 

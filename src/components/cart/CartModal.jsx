@@ -1,18 +1,16 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setItemsOnCart, setCartOpened } from "../../reducers/cart";
 import Color from "../itemComponents/Color";
 import StyledCartModal from "../styles/CartModal.styled";
 import AddToCart from "../itemComponents/addToCart";
 import BuyNow from "../itemComponents/BuyNow";
 import EditBtn from "../cart/EditBtn";
 
-const CartModal = ({
-  item,
-  title,
-  setItemsOnCart,
-  itemsOnCart,
-  setCartOpen,
-  setItemToEdit,
-}) => {
+const CartModal = ({ item, setItemToEdit }) => {
+  const dispatch = useDispatch();
+  const itemsOnCart = useSelector((state) => state.cart.value.items);
+  const title = useSelector((state) => state.cart.value.modalTitle);
   const [selectedColor, setSelectedColor] = useState(
     item.selected_color || null
   );
@@ -61,12 +59,12 @@ const CartModal = ({
         const index = itemsOnCart.indexOf(equalItem);
         let newItems = JSON.parse(JSON.stringify(itemsOnCart));
         newItems[index].quantity += itemQuantity;
-        setItemsOnCart(newItems);
+        dispatch(setItemsOnCart(newItems));
         closeModal();
         goToCart();
       } else {
         const item = cartItem();
-        setItemsOnCart(itemsOnCart.concat(item));
+        dispatch(setItemsOnCart(itemsOnCart.concat(item)));
         closeModal();
         goToCart();
       }
@@ -105,7 +103,7 @@ const CartModal = ({
   const goToCart = () => {
     if (title === "Buy Now") {
       setTimeout(() => {
-        setCartOpen(true);
+        dispatch(setCartOpened(true));
       }, 500);
     }
   };
@@ -140,11 +138,10 @@ const CartModal = ({
       if (!!equalItem) {
         const index = newItems.indexOf(equalItem);
         newItems[index].quantity += itemQuantity;
-        setItemsOnCart(newItems);
       } else {
         newItems.unshift(newItem);
-        setItemsOnCart(newItems);
       }
+      dispatch(setItemsOnCart(newItems));
       closeModal();
     }
   };

@@ -7,9 +7,14 @@ const StyledItems = styled.section`
   border-radius: 50px;
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   padding: 20px;
   gap: 20px;
   background: var(--bg-front);
+  .no-product {
+    padding-left: 20px;
+    color: var(--text-color-2);
+  }
   .title {
     width: 100%;
     font-size: 2rem;

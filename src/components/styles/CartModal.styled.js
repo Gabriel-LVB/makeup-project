@@ -75,19 +75,16 @@ const StyledCartModal = styled.div`
       display: flex;
       padding: 10px 0;
       flex-wrap: wrap;
-      gap: 7px;
+      gap: 15px;
       align-items: center;
       justify-content: start;
 
       li {
-        &::before {
-          width: 40px;
-          height: 40px;
-          cursor: pointer;
-          transition: all 0.2s ease-out;
-        }
-        &.selected::before {
-          border-bottom: 5px solid var(--text-color-1);
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+
+        &.selected {
+          box-shadow: 0px 0px 2px 2px var(--text-color-1);
           transform: scale(1.2);
         }
       }

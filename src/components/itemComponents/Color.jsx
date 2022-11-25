@@ -1,19 +1,14 @@
 import styled from "styled-components";
 
 const StyledColor = styled.li`
-  max-width: 95%;
-  display: flex;
+  content: "";
   list-style-type: none;
-  &::before {
-    content: "";
-    background-color: ${(props) => props.color};
-    height: ${(props) => props.size};
-    min-width: ${(props) => props.size};
-    border: 2px solid var(--text-color-1);
-    border-radius: 100%;
-    margin: 0 5px;
-    display: inline-block;
-  }
+  height: ${(props) => props.size};
+  min-width: ${(props) => props.size};
+  border: 2px solid var(--text-color-1);
+  border-radius: 100%;
+  margin: 0;
+  display: inline-block;
 `;
 
 const Color = ({
@@ -21,18 +16,20 @@ const Color = ({
   showName,
   onClick = () => {},
   className = "item__colors__color",
-  size = null,
 }) => {
   const printName = showName && !!color.colour_name;
   return (
-    <StyledColor
-      onClick={(e) => onClick(e, color)}
-      className={className}
-      size={size ? size : printName ? "22px" : "30px"}
-      color={color.hex_value}
-    >
-      {printName && color.colour_name}
-    </StyledColor>
+    <>
+      <StyledColor
+        style={{ background: `${color.hex_value}` }}
+        onClick={(e) => onClick(e, color)}
+        color={color.hex_value}
+        className={className}
+        size={"45px"}
+        name={color.colour_name}
+      ></StyledColor>
+      {printName && <p>{color.colour_name}</p>}
+    </>
   );
 };
 

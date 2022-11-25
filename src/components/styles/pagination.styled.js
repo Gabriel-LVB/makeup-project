@@ -15,7 +15,7 @@ const StyledPagination = styled.ul`
     border-bottom: 2px solid var(--text-color-1);
     cursor: pointer;
     border-radius: 10px;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     transition: all 0.2s ease-out;
     color: var(--text-color-1);
 

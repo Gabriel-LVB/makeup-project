@@ -2,6 +2,8 @@ import styled from "styled-components";
 import StyledItem from "./Item.styled";
 
 const StyledItemOpened = styled(StyledItem)`
+  max-height: 100%;
+
   width: 95%;
   margin: 0 auto;
   padding: 20px 15px;
@@ -72,6 +74,7 @@ const StyledItemOpened = styled(StyledItem)`
     }
     &__details {
       grid-area: detail;
+      width: 100%;
       hr {
         margin: 20px 30px;
       }

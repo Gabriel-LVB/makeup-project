@@ -1,8 +1,11 @@
 import StyledPagination from "../styles/pagination.styled";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrent } from "../../reducers/pagination";
 
-const Pagination = ({ items, pageSetter, currentPage }) => {
-  const pagesNumber = Math.ceil(items.length / 10);
+const Pagination = ({ currentPage }) => {
+  const dispatch = useDispatch();
 
+  const pagesNumber = useSelector((state) => state.pagination.value.numOfPages);
   if (pagesNumber === 0) {
     return null;
   }
@@ -15,7 +18,7 @@ const Pagination = ({ items, pageSetter, currentPage }) => {
         i + 1 === currentPage ? "pagination__item current" : "pagination__item"
       }
       onClick={() => {
-        pageSetter(i + 1);
+        dispatch(setCurrent(i + 1));
       }}
     >
       {i + 1}
@@ -52,7 +55,9 @@ const Pagination = ({ items, pageSetter, currentPage }) => {
       key={"previous"}
       className="pagination__item"
       onClick={() => {
-        pageSetter(currentPage - 1 >= 1 ? currentPage - 1 : currentPage);
+        dispatch(
+          setCurrent(currentPage - 1 >= 1 ? currentPage - 1 : currentPage)
+        );
       }}
     >
       {"Previous"}
@@ -63,8 +68,10 @@ const Pagination = ({ items, pageSetter, currentPage }) => {
       key="next"
       className="pagination__item"
       onClick={() => {
-        pageSetter(
-          currentPage + 1 <= pagesNumber ? currentPage + 1 : currentPage
+        dispatch(
+          setCurrent(
+            currentPage + 1 <= pagesNumber ? currentPage + 1 : currentPage
+          )
         );
       }}
     >

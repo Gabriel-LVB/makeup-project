@@ -1,7 +1,10 @@
 import backupImage from "../../backupImage.jpg";
 
 const Image = ({ item, onClick }) => {
-  const fallbackImage = (e) => (e.target.src = backupImage);
+  const fallbackImage = (e) => {
+    e.target.src = backupImage;
+  };
+
   return (
     <img
       src={item.image_link}

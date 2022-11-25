@@ -37,10 +37,11 @@ const GlobalStyles = createGlobalStyle`
 
   main{
     background-color: var(--bg-back);
+    padding-bottom: 30px;
     &>*{
         background: white;
       }
-  }
+    }
   @media (min-width: 1050px) {
     main{
       display: flex;
@@ -49,7 +50,6 @@ const GlobalStyles = createGlobalStyle`
         background: var(--bg-front);
         border-radius: 50px;
       }
-      padding-bottom: 30px;
     }
   }
 `;

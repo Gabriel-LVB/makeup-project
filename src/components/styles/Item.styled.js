@@ -18,6 +18,7 @@ export default styled.div`
   border-right: 3px solid var(--text-color-2);
   border-left: 3px solid var(--text-color-2);
   color: var(--text-color-1);
+  max-height: 460px;
 
   .item {
     &__img {
@@ -28,6 +29,7 @@ export default styled.div`
       grid-area: img;
       border-radius: 30px;
       cursor: pointer;
+      transition: all 0.3s ease-out;
 
       &:hover {
         transform: scale(1.1);
