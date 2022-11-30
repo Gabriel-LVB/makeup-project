@@ -20,8 +20,8 @@ const StyledCartModal = styled.div`
     position: fixed;
     left: 0;
     right: 0;
-    top: 100%;
-    bottom: -100%;
+    top: 150%;
+    bottom: -150%;
     transition: all 0.2s ease-out;
   }
   .content {

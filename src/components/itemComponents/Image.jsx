@@ -2,6 +2,7 @@ import backupImage from "../../backupImage.jpg";
 
 const Image = ({ item, onClick }) => {
   const fallbackImage = (e) => {
+    console.log(e);
     e.target.src = backupImage;
   };
 

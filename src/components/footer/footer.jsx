@@ -25,13 +25,21 @@ const Footer = () => {
     <StyledFooter>
       <p>
         Made by{" "}
-        <a href="https://github.com/Gabriel-LVB" target="_blank">
+        <a
+          href="https://github.com/Gabriel-LVB"
+          target="_blank"
+          rel="noreferrer"
+        >
           Gabriel-lvb
         </a>
       </p>
       <p>
         Based on{" "}
-        <a href="https://makeup-api.herokuapp.com/" target="_blank">
+        <a
+          href="https://makeup-api.herokuapp.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
           MakeUp-API
         </a>
       </p>

@@ -18,7 +18,11 @@ const Colors = ({ colors, showAll = false }) => {
         {colors &&
           (!showAll ? colors.slice(0, 10) : colors).map((color, i) => {
             return (
-              <Color key={color.hex_value + colors.length + i} color={color} />
+              <Color
+                key={color.hex_value + colors.length + i}
+                color={color}
+                showName={showAll}
+              />
             );
           })}
       </StyledColors>
