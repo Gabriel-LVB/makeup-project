@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import GlobalStyles from "./components/styles/Global.styles";
 import { ThemeProvider } from "styled-components";
-import useTheme from "./useTheme";
-import { lightTheme, darkTheme } from "./theme";
+import useTheme from "./features/useTheme";
+import { lightTheme, darkTheme } from "./features/theme";
 import dataBase from "./db.json";
 import Header from "./components/header/header";
 import SideNav from "./components/sideNav/sideNav";

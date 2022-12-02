@@ -17,7 +17,9 @@ export const categoryNames = Array.from(
   )
 );
 
-let tags = [];
-dataBase.map((item) => item.tag_list.map((tag) => tag && tags.push(tag)));
+let tags: string[] = [];
+dataBase.map((item) =>
+  item.tag_list.map((tag: string) => tag && tags.push(tag))
+);
 
 export const tagNames = Array.from(new Set(tags));

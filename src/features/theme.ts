@@ -1,5 +1,5 @@
 let theme = {
-  primary: "#cc71ca",
+  primary: "#d95d7a",
   transparent: "rgba(0, 0, 0, 0)",
   semiTransparent: "rgba(0, 0, 0, 0.5)",
 };

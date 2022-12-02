@@ -1,15 +1,15 @@
-import backupImage from "../../backupImage.jpg";
+import fallbackImage from "../../assets/fallbackImage.jpg";
 
 const Image = ({ item, onClick }) => {
-  const fallbackImage = (e) => {
+  const fallback = (e) => {
     console.log(e);
-    e.target.src = backupImage;
+    e.target.src = fallbackImage;
   };
 
   return (
     <img
       src={item.image_link}
-      onError={fallbackImage}
+      onError={fallback}
       loading="lazy"
       alt={item.name}
       className="item__img"
