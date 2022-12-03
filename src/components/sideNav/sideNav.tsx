@@ -4,6 +4,8 @@ import StyledBtn from "../styles/Button.styled";
 import { brandNames, categoryNames, tagNames } from "../../features/names";
 import { OnListItemClickType } from "../../types/types";
 
+console.log(brandNames);
+
 const SideNav = ({
   onListItemClick,
 }: {
@@ -43,7 +45,7 @@ const SideNav = ({
         />
         <SNList
           title="brands"
-          names={brandNames}
+          names={brandNames as string[]}
           onListItemClick={onListItemClick}
           toggleNav={toggleNav}
           closeLists={closeLists}
