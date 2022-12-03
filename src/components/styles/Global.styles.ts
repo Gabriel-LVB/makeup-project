@@ -1,8 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import blackout from "../../assets/Blackout.woff";
-import themeType from "../../types/themeType";
+import ThemeType from "../../types/themeType";
 
-const GlobalStyles = createGlobalStyle<{ theme: themeType }>`
+const GlobalStyles = createGlobalStyle<{ theme: ThemeType }>`
   :root{
   --bg-front: ${({ theme }) => theme.backgroundContent};
   --bg-back: ${({ theme }) => theme.background};

@@ -9,11 +9,11 @@ export const brandNames = Array.from(
       .map((item) => item.brand && item.brand.replace("_", " "))
   )
 );
-export const categoryNames = Array.from(
+export const categoryNames: string[] = Array.from(
   new Set(
     dataBase
       .filter((item) => item.category !== null && item.category.length > 0)
-      .map((item) => item.category && item.category.replace("_", " "))
+      .map((item) => item.category! && item.category.replace("_", " "))
   )
 );
 

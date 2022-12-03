@@ -1,4 +1,4 @@
-interface themeType {
+interface ThemeType {
   backgroundContent: string;
   background: string;
   primary: string;
@@ -9,4 +9,4 @@ interface themeType {
   semiTransparent: string;
 }
 
-export default themeType;
+export default ThemeType;
