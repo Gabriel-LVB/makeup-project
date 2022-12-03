@@ -4,8 +4,6 @@ import StyledBtn from "../styles/Button.styled";
 import { brandNames, categoryNames, tagNames } from "../../features/names";
 import { OnListItemClickType } from "../../types/types";
 
-console.log(brandNames);
-
 const SideNav = ({
   onListItemClick,
 }: {
